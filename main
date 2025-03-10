@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Получаем единственный экземпляр VehicleRegistry
+        VehicleRegistry registry = VehicleRegistry.getInstance();
+
+        // Выбираем тип транспортного средства с помощью ввода пользователя
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите тип транспортного средства (car, motorcycle, truck):");
+        String type = scanner.nextLine().toLowerCase();
+
+        // Создаем соответствующую фабрику
+        VehicleFactory factory = null;
+        switch (type) {
+            case "car":
+                factory = new CarFactory();
+                break;
+            case "motorcycle":
+                factory = new MotorcycleFactory();
+                break;
+            case "truck":
+                factory = new TruckFactory();
+                break;
+            default:
+                System.out.println("Неизвестный тип транспортного средства.");
+                return;
+        }
+
+        // Создаем транспортное средство
+        Vehicle vehicle = factory.createVehicle(type);
+        // Регистрируем его в VehicleRegistry
+        registry.registerVehicle(vehicle);
+
+        // Выводим список зарегистрированных транспортных средств
+        registry.listVehicles();
+
+        // Запускаем двигатель транспортного средства
+        vehicle.startEngine();
+    }
+}
