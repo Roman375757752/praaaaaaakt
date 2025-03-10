@@ -1,0 +1,26 @@
+// Интерфейс Vehicle
+public interface Vehicle {
+    void startEngine();
+}
+
+// Реализация транспортных средств
+class Car implements Vehicle {
+    @Override
+    public void startEngine() {
+        System.out.println("Двигатель автомобиля запущен.");
+    }
+}
+
+class Motorcycle implements Vehicle {
+    @Override
+    public void startEngine() {
+        System.out.println("Двигатель мотоцикла запущен.");
+    }
+}
+
+class Truck implements Vehicle {
+    @Override
+    public void startEngine() {
+        System.out.println("Двигатель грузовика запущен.");
+    }
+}
