@@ -1,0 +1,26 @@
+// Интерфейс VehicleFactory
+public interface VehicleFactory {
+    Vehicle createVehicle(String model);
+}
+
+// Фабрики для создания разных типов транспортных средств
+class CarFactory implements VehicleFactory {
+    @Override
+    public Vehicle createVehicle(String model) {
+        return new Car();
+    }
+}
+
+class MotorcycleFactory implements VehicleFactory {
+    @Override
+    public Vehicle createVehicle(String model) {
+        return new Motorcycle();
+    }
+}
+
+class TruckFactory implements VehicleFactory {
+    @Override
+    public Vehicle createVehicle(String model) {
+        return new Truck();
+    }
+}
