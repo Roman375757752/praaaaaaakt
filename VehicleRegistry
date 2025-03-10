@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+
+// Класс VehicleRegistry с паттерном Singleton
+public class VehicleRegistry {
+    private static VehicleRegistry instance;
+    private List<Vehicle> vehicles = new ArrayList<>();
+
+    // Приватный конструктор
+    private VehicleRegistry() {}
+
+    // Метод для получения единственного экземпляра
+    public static synchronized VehicleRegistry getInstance() {
+        if (instance == null) {
+            instance = new VehicleRegistry();
+        }
+        return instance;
+    }
+
+    // Метод для регистрации транспортного средства
+    public void registerVehicle(Vehicle vehicle) {
+        vehicles.add(vehicle);
+    }
+
+    // Метод для вывода списка зарегистрированных транспортных средств
+    public void listVehicles() {
+        for (Vehicle vehicle : vehicles) {
+            System.out.println(vehicle.getClass().getSimpleName());
+        }
+    }
+}
